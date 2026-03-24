@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Health check",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 404,
+      "bodyMatcher": "partial",
+      "expectedBody": {"error": "Not found"}
+    }
+  ]
+}

@@ -5,6 +5,7 @@ interface AvatarProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   online?: boolean;
   className?: string;
+  color?: string;
 }
 
 const sizes = {
@@ -14,10 +15,10 @@ const sizes = {
   xl: { box: 'w-16 h-16', text: 'text-xl', dot: 'w-3.5 h-3.5 border-2' },
 };
 
-export default function Avatar({ name, size = 'md', online, className = '' }: AvatarProps) {
+export default function Avatar({ name, size = 'md', online, className = '', color: colorProp }: AvatarProps) {
   const s = sizes[size];
   const isEmoji = /\p{Emoji}/u.test(name) && name.length <= 2;
-  const color = isEmoji ? '#374151' : getAvatarColor(name);
+  const color = colorProp || (isEmoji ? '#374151' : getAvatarColor(name));
 
   return (
     <div className={`relative flex-shrink-0 ${className}`}>
